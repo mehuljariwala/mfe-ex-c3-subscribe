@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const externalReact = require("webpack-external-react");
 
 module.exports = {
   mode: "production",
@@ -13,7 +14,9 @@ module.exports = {
       template: path.join(__dirname, "public", "index.html"),
     }),
   ],
+  externals: externalReact.externals,
   module: {
+    noParse: externalReact.noParse,
     rules: [
       {
         test: /\.(js|jsx)$/,
